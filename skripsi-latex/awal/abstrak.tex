@@ -1,0 +1,43 @@
+% !TEX root = ../main.tex
+% Abstrak (pedoman 10.17, format monograf):
+%   - satu paragraf, maksimal 500 kata, satu spasi;
+%   - dua bahasa, sebisa mungkin dalam satu halaman;
+%   - nama (tanpa NPM), program studi, dan judul di atas abstrak;
+%   - kata kunci di bawah, dalam bahasa masing-masing;
+%   - semua istilah asing (kecuali nama) dicetak miring.
+\chapter*{ABSTRAK}
+\phantomsection\addcontentsline{toc}{chapter}{ABSTRAK}
+\vspace{-1\baselineskip}
+{\setstretch{1}
+\noindent\begin{tabular}{@{}p{3cm}@{\,:\,}>{\raggedright\arraybackslash}p{10.5cm}@{}}
+Nama & \thenama \\
+Program Studi & \theprodi \\
+Judul & \thejudul \\
+Pembimbing & \thepembimbing \\
+\end{tabular}
+
+\vspace{0.4cm}
+\noindent Tulis abstrak dalam satu paragraf: masalah dan celah penelitian, tujuan,
+metode (konfigurasi \textit{single-model}, \textit{self-consistency}, dan
+\textit{LLM council} pada Agen Verifikasi), data, hasil utama dengan angka, dan
+kesimpulan. Maksimal 500 kata.
+
+\vspace{0.3cm}
+\noindent\textbf{Kata kunci:} kata kunci 1, kata kunci 2, kata kunci 3
+
+\vspace{1cm}
+\begin{center}\bfseries ABSTRACT\end{center}
+\noindent\begin{tabular}{@{}p{3cm}@{\,:\,}>{\raggedright\arraybackslash}p{10.5cm}@{}}
+Name & \thenama \\
+Study Program & \theprodi \\
+Title & \thejudulinggris \\
+Supervisor & \thepembimbing \\
+\end{tabular}
+
+\vspace{0.4cm}
+\noindent\textit{Write the English abstract here, as a single paragraph of at most
+500 words, matching the Indonesian abstract.}
+
+\vspace{0.3cm}
+\noindent\textbf{\textit{Keywords:}} \textit{keyword 1, keyword 2, keyword 3}
+\par}

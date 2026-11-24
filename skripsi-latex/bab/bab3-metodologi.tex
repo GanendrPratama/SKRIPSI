@@ -1,0 +1,61 @@
+% !TEX root = ../main.tex
+\chapter{METODOLOGI PENELITIAN}
+\label{bab:metodologi}
+% Pedoman 9.3: cukup rinci agar eksperimen dapat diulang oleh orang lain.
+
+\section{Jenis dan Desain Penelitian}
+\label{sec:desain}
+% Kuantitatif, eksperimen komparatif. Sertakan gambar alur penelitian.
+...
+
+\section{Rancangan Sistem}
+\label{sec:rancangan}
+\subsection{Arsitektur Sistem}
+% Alur n8n: Direktur -> Pencari -> Peneliti -> Agen Verifikasi -> Pengamat Teknis.
+...
+\subsection{Lapisan \asing{Serving}}
+% vLLM, model dan kuantisasi, cara tiga model berbagi satu GPU.
+...
+\subsection{Konfigurasi Agen Verifikasi}
+\begin{table}[htbp]
+  \caption{Konfigurasi Agen Verifikasi yang dibandingkan}
+  \label{tab:konfigurasi}
+  \centering\setstretch{1}
+  \begin{tabularx}{\textwidth}{@{}l X X@{}}
+    \toprule
+    Kode & Konfigurasi & Fungsi \\
+    \midrule
+    S1--S3 & Setiap model kandidat sendirian & \asing{Baseline}; mencari \asing{single model} terbaik \\
+    SC & \asing{Single model} terbaik, $k$ sampel, \asing{majority vote} & Kontrol: komputasi setara \asing{council} tanpa keberagaman model \\
+    C-vote & Tiga model berbeda, \asing{majority vote} & \asing{Council} paling sederhana \\
+    C-chair & Tiga model menjawab, satu \asing{chairman} menyintesis & Pola \asing{LLM council} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+\subsection{\asing{Prompt} dan Format Keluaran}
+...
+
+\section{Objek Penelitian dan \asing{Dataset}}
+\label{sec:dataset}
+...
+
+\section{Lingkungan dan Instrumen Penelitian}
+\label{sec:lingkungan}
+...
+
+\section{Prosedur Eksperimen}
+\label{sec:prosedur}
+...
+
+\section{Metode Analisis Data}
+\label{sec:analisis}
+% Contoh rumus:
+\begin{equation}
+  F_1 = \frac{2 \cdot \mathit{precision} \cdot \mathit{recall}}{\mathit{precision} + \mathit{recall}}
+  \label{eq:f1}
+\end{equation}
+...
+
+\section{Etika Penelitian}
+\label{sec:etika}
+...

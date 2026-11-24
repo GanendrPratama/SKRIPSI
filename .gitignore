@@ -1,0 +1,14 @@
+# Paper PDFs and media: large and copyrighted, keep them local only
+Lits/**/*.pdf
+TELCO_AEGIS/*.pdf
+TELCO_AEGIS/*.mp4
+TELCO_AEGIS/*.png
+
+# LaTeX build output (also covered in skripsi-latex/.gitignore)
+skripsi-latex/main.pdf
+skripsi-latex/build/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*~

@@ -1,0 +1,2 @@
+$pdf_mode = 1;        # pdfLaTeX
+$bibtex_use = 2;      # jalankan biber bila perlu

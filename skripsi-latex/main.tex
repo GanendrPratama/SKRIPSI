@@ -1,0 +1,88 @@
+% =============================================================================
+% Skripsi — format monograf Universitas Indonesia 2025
+% Kompilasi: pdfLaTeX -> Biber -> pdfLaTeX -> pdfLaTeX  (Overleaf: otomatis)
+% =============================================================================
+\documentclass[12pt,a4paper,oneside]{report}
+\usepackage{ui-thesis}
+\addbibresource{referensi.bib}   % ekspor otomatis Zotero (Better BibTeX)
+\addbibresource{manual.bib}      % entri tulisan tangan, tidak ditimpa Zotero
+
+% ---------------------------------------------------------------------------
+% DATA TUGAS AKHIR — isi semua baris di bawah
+% Judul: tanpa singkatan (kecuali nama/istilah), bukan kalimat tanya, tanpa
+% tanda baca penutup (pedoman 10.8).
+% ---------------------------------------------------------------------------
+\judul{PERBANDINGAN SINGLE-MODEL DAN LLM COUNCIL PADA AGEN VERIFIKASI KERENTANAN DALAM SISTEM LLM MULTI-AGENT LOKAL}
+\judulinggris{COMPARING A SINGLE MODEL AND AN LLM COUNCIL FOR THE VULNERABILITY VERIFICATION AGENT OF A LOCAL MULTI-AGENT LLM SYSTEM}
+\nama{NAMA LENGKAP}
+\npm{NPM}
+\jenis{SKRIPSI}
+\gelar{Sarjana Teknik}            % cek gelar yang berlaku di prodi
+\fakultas{TEKNIK}                 % cek
+\departemen{TEKNIK ELEKTRO}       % cek
+\prodi{TEKNIK KOMPUTER}           % cek
+\kota{DEPOK}
+\bulantahun{BULAN TAHUN}          % bulan dan tahun pengesahan, mis. JULI 2027
+\tahunakademik{2026/2027}
+\pembimbing{Nama Pembimbing, gelar}
+\pembimbingdua{}                  % kosongkan jika hanya satu pembimbing
+\pengujisatu{Nama Penguji 1, gelar}
+\pengujidua{Nama Penguji 2, gelar}
+\tanggalsidang{.................}
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+% BAGIAN AWAL (urutan sesuai pedoman 10.1)
+% ---------------------------------------------------------------------------
+\include{awal/sampul}                % tanpa nomor
+\pagenumbering{roman}
+\uifrontmatterplain
+\include{awal/halaman-judul}         % i, nomor tidak ditampilkan
+\include{awal/orisinalitas}          % ii
+\include{awal/pernyataan-ai}         % iii
+\include{awal/pengesahan}            % iv
+\include{awal/surat-pernyataan}      % ada di Template UI 2025; hapus jika fakultas tidak memakai
+\include{awal/kata-pengantar}
+\include{awal/persetujuan-publikasi}
+
+\uifrontmatter                       % footer "Universitas Indonesia" mulai Abstrak
+\include{awal/abstrak}
+
+\begingroup
+\setstretch{1}
+\tableofcontents
+\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+\listoffigures
+\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{DAFTAR TABEL}
+\listoftables
+\endgroup
+
+% ---------------------------------------------------------------------------
+% ISI
+% ---------------------------------------------------------------------------
+\uimainmatter
+\include{bab/bab1-pendahuluan}
+\include{bab/bab2-tinjauan-pustaka}
+\include{bab/bab3-metodologi}
+\include{bab/bab4-hasil-pembahasan}
+\include{bab/bab5-kesimpulan}
+
+% ---------------------------------------------------------------------------
+% DAFTAR REFERENSI
+% ---------------------------------------------------------------------------
+\clearpage
+\begingroup
+\setstretch{1}
+\printbibliography[heading=bibintoc,title={DAFTAR REFERENSI}]
+\endgroup
+
+% ---------------------------------------------------------------------------
+% LAMPIRAN (jika ada)
+% ---------------------------------------------------------------------------
+\uilampiran
+\include{lampiran/lampiran}
+
+\end{document}

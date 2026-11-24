@@ -1,0 +1,79 @@
+% !TEX root = ../main.tex
+\chapter{PENDAHULUAN}
+\label{bab:pendahuluan}
+
+\section{Latar Belakang}
+\label{sec:latar-belakang}
+% Empat langkah (pedoman 9.1): (1) situasi, (2) mengapa penting, (3) celah
+% penelitian, (4) apa yang dilakukan skripsi ini. Setiap klaim faktual diberi
+% sitasi. Akhiri dengan celah, bukan dengan latar belakang umum.
+
+Tulis situasi di lapangan di sini. Contoh sitasi: sistem multi-agen untuk manajemen
+kerentanan telah dibangun dengan n8n dan model lokal~\cite{wijaya2026}, dan vLLM
+melayani model bahasa besar dengan \asing{PagedAttention}~\cite{kwonEfficientMemoryManagement}.
+
+Tulis mengapa masalah ini penting di sini.
+
+Tulis celah penelitian di sini.
+
+Tulis apa yang dilakukan penelitian ini di sini.
+
+\section{Rumusan Masalah}
+\label{sec:rumusan-masalah}
+% Satu masalah utama dan 2--3 submasalah (pedoman 9.1 butir 2).
+\begin{enumerate}
+  \item Apakah \asing{LLM council} menghasilkan verifikasi kerentanan yang lebih
+        akurat dibandingkan \asing{single model} terbaik pada perangkat keras lokal
+        yang sama?
+  \item Berapa biaya tambahan \asing{LLM council} dalam latensi, jumlah token, dan
+        penggunaan VRAM?
+  \item Strategi agregasi mana yang paling efektif: \asing{majority vote},
+        \asing{weighted vote}, atau \asing{chairman model}?
+\end{enumerate}
+
+\section{Hipotesis Penelitian}
+\label{sec:hipotesis}
+% Satu hipotesis per rumusan masalah, dapat diuji oleh eksperimen.
+\begin{enumerate}
+  \item ...
+\end{enumerate}
+
+\section{Tujuan Penelitian}
+\label{sec:tujuan}
+% Satu tujuan per rumusan masalah, dengan urutan yang sama (pedoman 9.1 butir 3).
+\begin{enumerate}
+  \item ...
+\end{enumerate}
+
+\section{Manfaat Penelitian}
+\label{sec:manfaat}
+% Pedoman 9.1 butir 4: manfaat akademis dan manfaat praktis.
+\subsection{Manfaat Akademis}
+...
+
+\subsection{Manfaat Praktis}
+...
+
+\section{Ruang Lingkup Penelitian}
+\label{sec:ruang-lingkup}
+% Batasan, asumsi, dan keterbatasan (pedoman 9.1 butir 5).
+\begin{enumerate}
+  \item Perbandingan hanya dilakukan pada Agen Verifikasi; agen lain dijalankan
+        secara lokal tetapi tidak dievaluasi.
+  \item Orkestrasi memakai n8n dan \asing{serving} memakai vLLM dengan model
+        \asing{open-weight} terkuantisasi.
+  \item ...
+\end{enumerate}
+
+\section{Sistematika Penulisan}
+\label{sec:sistematika}
+% Opsional untuk format monograf; satu paragraf singkat per bab.
+\textbf{Bab~\ref{bab:pendahuluan} Pendahuluan} berisi ...
+
+\textbf{Bab~\ref{bab:tinjauan} Tinjauan Pustaka} berisi ...
+
+\textbf{Bab~\ref{bab:metodologi} Metodologi Penelitian} berisi ...
+
+\textbf{Bab~\ref{bab:hasil} Hasil dan Pembahasan} berisi ...
+
+\textbf{Bab~\ref{bab:kesimpulan} Kesimpulan dan Saran} berisi ...

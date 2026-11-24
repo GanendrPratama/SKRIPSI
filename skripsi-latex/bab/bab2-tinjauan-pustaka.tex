@@ -1,0 +1,87 @@
+% !TEX root = ../main.tex
+\chapter{TINJAUAN PUSTAKA}
+\label{bab:tinjauan}
+% Pedoman 9.2: teori, kajian literatur, kesenjangan, kerangka pemikiran,
+% definisi operasional. Bab ini harus berakhir pada celah yang diklaim di Bab 1.
+
+\section{Landasan Teori}
+\label{sec:teori}
+\subsection{Manajemen Kerentanan dan CVE}
+...
+\subsection{\asing{Large Language Model} dan Kuantisasi}
+...
+\subsection{\asing{Serving} LLM dengan vLLM}
+...
+\subsection{Sistem Multi-Agen dan Orkestrasi dengan n8n}
+...
+\subsection{Penggabungan Jawaban Beberapa LLM}
+% Self-consistency, majority/weighted voting, multi-agent debate,
+% LLM-as-a-judge/chairman. Bagian teori inti: beri ruang paling banyak.
+...
+\subsection{Evaluasi Klasifikasi}
+% Confusion matrix, precision, recall, F1, Fleiss' kappa, uji McNemar.
+...
+
+\section{Penelitian Terkait}
+\label{sec:penelitian-terkait}
+% Kelompokkan per tema, bukan satu paragraf per paper.
+\subsection{\asing{Multi-Agent Debate} dan \asing{LLM Council}}
+...
+\subsection{\asing{Ensemble} dan \asing{Voting} pada LLM}
+...
+\subsection{\asing{LLM-as-a-Judge}}
+...
+\subsection{LLM dan Agen untuk Keamanan Siber}
+...
+\subsection{Model Kecil dan \asing{Deployment} Lokal}
+...
+
+% Tabel perbandingan penelitian terkait (contoh format tabel).
+\begin{table}[htbp]
+  \caption{Perbandingan penelitian terkait}
+  \label{tab:perbandingan}
+  \centering\small\setstretch{1}
+  \begin{tabularx}{\textwidth}{@{}l X l l X@{}}
+    \toprule
+    Penelitian & Domain & Jumlah model & Lokal/\asing{cloud} & Hasil utama \\
+    \midrule
+    ... & ... & ... & ... & ... \\
+    Penelitian ini & Verifikasi kerentanan & 1 vs 3 & Lokal & ... \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Analisis Kesenjangan Penelitian}
+\label{sec:kesenjangan}
+...
+
+\section{Kerangka Pemikiran}
+\label{sec:kerangka}
+% Gambar model konseptual: masalah -> intervensi -> hasil yang diukur.
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][4cm][c]{0.8\textwidth}{\centering Gambar kerangka pemikiran}}
+  \caption{Kerangka pemikiran penelitian}
+  \label{fig:kerangka}
+\end{figure}
+
+\section{Definisi Operasional}
+\label{sec:definisi-operasional}
+\begin{table}[htbp]
+  \caption{Definisi operasional}
+  \label{tab:definisi-operasional}
+  \centering\small\setstretch{1}
+  \begin{tabularx}{\textwidth}{@{}l X X l@{}}
+    \toprule
+    Istilah & Definisi & Cara mengukur & Satuan \\
+    \midrule
+    \asing{True positive} & ... & ... & kasus \\
+    \asing{False positive} & ... & ... & kasus \\
+    F1 & ... & ... & -- \\
+    Latensi p50/p95 & ... & ... & detik \\
+    Total token & ... & ... & token \\
+    VRAM puncak & ... & ... & GB \\
+    Fleiss' kappa & ... & ... & -- \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
