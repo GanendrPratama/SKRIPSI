@@ -8,72 +8,276 @@
 % penelitian, (4) apa yang dilakukan skripsi ini. Setiap klaim faktual diberi
 % sitasi. Akhiri dengan celah, bukan dengan latar belakang umum.
 
-Tulis situasi di lapangan di sini. Contoh sitasi: sistem multi-agen untuk manajemen
-kerentanan telah dibangun dengan n8n dan model lokal~\cite{wijaya2026}, dan vLLM
-melayani model bahasa besar dengan \asing{PagedAttention}~\cite{kwonEfficientMemoryManagement}.
+% (1) Situasi: AI mempercepat penemuan kerentanan, jumlah CVE melonjak.
+Kecerdasan buatan (\asing{artificial intelligence}, AI) kini tidak hanya
+dipakai untuk menulis perangkat lunak, tetapi juga untuk mencari celah keamanan
+di dalamnya. Agen berbasis \asing{large language model} (LLM) mampu menelusuri
+kode sumber, menyusun hipotesis kerentanan, lalu membuktikannya dengan
+\asing{proof of concept}~\cite{addisLLMBasedIntelligentAgents2026}. Kemampuan
+ini diuji dalam skala besar pada \asing{AI Cyber Challenge} (AIxCC) yang
+diselenggarakan DARPA. Pada babak final Agustus 2025, tujuh sistem otonom
+menganalisis 53 proyek perangkat lunak sumber terbuka selama sekitar 143 jam
+tanpa campur tangan manusia, dan seluruh tim menemukan setidaknya satu
+kerentanan \asing{zero-day} yang sebelumnya tidak diketahui~\cite{zhang2026aixcc}.
+Di luar kompetisi, pengembang model juga mulai memindai perangkat lunak sumber
+terbuka secara massal. Anthropic melaporkan bahwa pemindainya telah menemukan
+lebih dari 29.000 kandidat kerentanan, tetapi baru sekitar 6.000 di antaranya
+yang sempat ditinjau secara manual karena kapasitas manusia untuk memvalidasi
+temuan menjadi hambatan utama~\cite{anthropic2026ossscanner}. Pada tolok ukur
+CyberGym, LLM yang pada awal 2025 menemukan kurang dari 20\% kerentanan kini
+menemukan lebih dari 85\%~\cite{anthropic2026ossscanner}.
 
-Tulis mengapa masalah ini penting di sini.
+Percepatan penemuan ini tampak pada jumlah \asing{Common Vulnerabilities and
+Exposures} (CVE) yang dipublikasikan. Pada 2024 tercatat sekitar 40.000 CVE,
+pada 2025 jumlahnya mencapai rekor 48.185 CVE, dan pada 2026 diproyeksikan
+sekitar 66.000 CVE~\cite{hand2026vulnpocalypse}. Penemuan kerentanan otomatis
+oleh model AI disebut sebagai salah satu pendorong lonjakan tersebut, di
+samping bertambahnya kode yang ditulis oleh AI itu
+sendiri~\cite{hand2026vulnpocalypse}. Lembaga yang mengelola basis data
+kerentanan pun kewalahan. NIST melaporkan kenaikan pengajuan sebesar 263\%
+sejak 2020 dan kini memprioritaskan analisis berdasarkan tingkat risiko, bukan
+menganalisis setiap CVE; pada 2025 hanya sekitar 28\% CVE baru yang dianalisis
+penuh oleh \asing{National Vulnerability Database}
+(NVD)~\cite{hand2026vulnpocalypse}. Pada saat yang sama, jeda antara
+publikasi kerentanan dan eksploitasinya semakin pendek, sehingga CISA
+mengganti tenggat perbaikan tetap 14 hari dengan model berbasis risiko yang
+dapat menuntut tindakan dalam tiga hari~\cite{hand2026vulnpocalypse}.
 
-Tulis celah penelitian di sini.
+Kemampuan AI yang sama juga sudah dipakai oleh penyerang. ARTEX, sebuah
+\asing{framework} \asing{penetration testing} sumber terbuka yang menjalankan
+beberapa agen LLM secara otonom, telah disalahgunakan oleh berbagai kelompok
+peretas sejak Agustus 2026 untuk menyerang organisasi di sektor pemerintahan,
+telekomunikasi, keuangan, dan manufaktur~\cite{gtig2026artex}. Operator cukup
+memberikan tujuan dalam bahasa alami, lalu agen-agen ARTEX menjalankan
+pengintaian, eksploitasi, eskalasi hak akses, dan perpindahan ke sistem lain
+secara mandiri. Dalam salah satu kampanye, pelaku bergerak dari akun pertama
+yang dibobol hingga akses sistem yang dalam dalam waktu sekitar empat jam, dan
+pada satu kasus hanya 15 menit~\cite{gtig2026artex}. FBI mencatat bahwa
+sebagian intrusi mencapai akses istimewa dalam waktu kurang dari tiga jam sejak
+penargetan awal, dan bahwa ARTEX memungkinkan pelaku dengan keahlian teknis
+minim menjalankan operasi yang kompleks terhadap banyak target
+sekaligus~\cite{fbi2026artex}. ARTEX juga sangat efektif menyerang sistem
+pinggiran yang kurang mendapat perhatian keamanan, seperti portal mitra dan
+pemasok, \asing{backend} aplikasi seluler, dan layanan lama, serta memanfaatkan
+vendor pihak ketiga yang lebih lemah sebagai pintu masuk ke jaringan perusahaan
+yang lebih besar~\cite{fbi2026artex}. Hingga awal November 2026, lebih dari 1.600
+konsol ARTEX ditemukan terbuka di internet~\cite{fbi2026artex}. CERT-EU menilai bahwa
+ARTEX mampu menguji sejumlah besar salah konfigurasi sederhana yang tidak
+sempat diperiksa oleh penguji manusia dan merangkainya menjadi jalur serangan,
+sehingga menyarankan agar setiap temuan, termasuk yang tidak parah, tetap
+dimasukkan ke dalam siklus perbaikan~\cite{certeu2026artex}. Dengan demikian,
+kerentanan tidak hanya ditemukan semakin cepat, tetapi juga dieksploitasi
+semakin cepat.
 
-Tulis apa yang dilakukan penelitian ini di sini.
+% (2) Mengapa penting: UMKM tanpa tim keamanan siber kewalahan.
+Bagi organisasi besar yang memiliki pusat operasi keamanan, lonjakan ini
+menambah beban kerja. Bagi usaha kecil dan menengah (UKM), lonjakan ini dapat
+melampaui kemampuan mereka sama sekali. UKM umumnya tidak memiliki tim keamanan
+siber khusus, anggaran yang memadai, maupun pengetahuan untuk menilai sendiri
+kerentanan pada sistem yang mereka
+jalankan~\cite{chaudharyQuestResearchKnowledge2023,michalekCyberIncidentPrevention2026}.
+Padahal, dari puluhan ribu CVE setiap tahun, hanya sebagian kecil yang benar-benar
+relevan dan dapat dieksploitasi pada sistem tertentu: data EPSS menunjukkan bahwa
+hanya sekitar 5\% CVE yang pernah teramati dieksploitasi~\cite{hand2026vulnpocalypse}.
+Pekerjaan memilah CVE yang relevan, memastikan apakah kerentanan itu benar-benar
+ada pada sistem, lalu memprioritaskan perbaikannya merupakan inti manajemen
+kerentanan~\cite{syedCybersecurityVulnerabilityManagement2020,shimizuVulnerabilityManagementChaining2026}.
+Tanpa tim khusus, pekerjaan ini praktis tidak dilakukan, sehingga kerentanan
+yang sebenarnya dapat diperbaiki dibiarkan terbuka.
+
+Sistem multi-agen berbasis LLM menawarkan jalan keluar dengan mengotomatiskan
+alur manajemen kerentanan. Wijaya~\cite{wijaya2026} merancang sistem semacam ini
+menggunakan n8n sebagai orkestrator. Sistem tersebut terdiri atas Agen Direktur,
+Agen Pencari, Agen Peneliti, Agen Verifikasi, dan Agen Pengamat Teknis yang
+bersama-sama mengidentifikasi layanan pada server target, mencari CVE yang
+relevan, menyusun spesifikasi teknis, lalu membuat dan menjalankan kode
+verifikasi untuk memastikan keberadaan kerentanan. Namun, sistem tersebut
+memiliki tiga keterbatasan yang saling berkaitan~\cite{wijaya2026}. Pertama,
+sebagian besar agen bergantung pada LLM berbasis \asing{cloud}, sehingga
+informasi sensitif organisasi, seperti layanan yang berjalan, konfigurasi sistem,
+dan kerentanan yang ditemukan, dikirim ke pihak ketiga. Risiko kebocoran dan
+penyalahgunaan data semacam ini merupakan persoalan keamanan tersendiri dalam
+operasional LLM di \asing{cloud}~\cite{aliDoubleedgedSwordLLM2026}. Kedua, LLM
+publik cenderung menolak membuat kode yang menyerupai eksploit, padahal kode
+semacam itu diperlukan untuk verifikasi. Ketiga, Agen Verifikasi yang dijalankan
+secara lokal dengan model kecil di CPU memakan sekitar 57\% waktu eksekusi dan
+tidak berhasil memverifikasi satu kerentanan pun. Dengan kata lain, Agen
+Verifikasi merupakan titik terlemah sistem tersebut.
+
+Dua keterbatasan pertama mendorong agar seluruh sistem dijalankan secara
+\asing{self-hosted} dengan model \asing{open-weight}. Pendekatan ini tidak
+otomatis menjamin privasi~\cite{alzoubiAssessingPrivacyRisks2026} dan menuntut
+infrastruktur yang sering kali tidak dimiliki UKM~\cite{Islam_2026}, tetapi
+setidaknya menjaga data kerentanan tetap berada di dalam organisasi. Keterbatasan
+ketiga menunjukkan bahwa \asing{self-hosting} membawa kendala sumber daya. Dari
+sisi \asing{serving}, vLLM dengan \asing{PagedAttention} meningkatkan
+\asing{throughput} 2--4 kali dibandingkan sistem
+sebelumnya~\cite{kwonEfficientMemoryManagement} dan terbukti jauh lebih stabil
+daripada Ollama pada beban permintaan bersamaan~\cite{ayBenchmarkingOllamaVLLM2026},
+sehingga layak menggantikan Ollama yang dipakai pada sistem
+dasar~\cite{wijaya2026}. Dari sisi kualitas, model lokal yang muat pada satu GPU
+umumnya lebih lemah daripada model proprietary
+terbesar~\cite{koterbaLeveragingLargeLanguage2026}, sehingga diperlukan cara lain
+untuk meningkatkan ketepatan verifikasi.
+
+% (3) Celah penelitian.
+Salah satu cara tersebut adalah menggabungkan keluaran beberapa LLM, yang dalam
+penelitian ini disebut \asing{LLM council}. Gagasannya, beberapa model yang
+berbeda mengerjakan tugas yang sama, lalu hasilnya digabungkan melalui
+\asing{voting} atau dipilih oleh satu model penilai (\asing{chairman}). Survei
+\asing{ensemble} LLM menunjukkan bahwa penggabungan semacam ini dapat
+meningkatkan kualitas pembangkitan teks dan kode~\cite{ashigaEnsembleLearningLarge2026},
+dan sistem multi-agen yang tersusun dari model kecil mampu menyaingi model
+besar pada pembangkitan kode~\cite{zhangPowerSmallLLMs2026}. Pada domain
+kerentanan, sistem multi-agen LLM juga telah dipakai untuk analisis kerentanan
+perangkat IoT~\cite{yangLIVAMultiAgentLLMAssisted}. Namun, penggabungan beberapa
+model tidak selalu menguntungkan. Halusinasi satu agen dapat menular ke agen
+lain~\cite{zhangBewareWoozleEffect2026}, dan setiap anggota tambahan
+melipatgandakan token, latensi, memori GPU, dan energi yang dibutuhkan. Bagi UKM
+yang hanya mampu menyediakan satu server GPU, biaya tambahan ini menentukan
+apakah sebuah pendekatan layak dipakai atau tidak.
+
+Penelusuran literatur pada jurnal IEEE dan ScienceDirect periode 2023--2026
+tidak menemukan penelitian yang membandingkan model tunggal dengan \asing{LLM
+council} untuk verifikasi kerentanan pada model lokal, apalagi yang mengukur
+pertukaran (\asing{trade-off}) antara peningkatan akurasi dan tambahan
+penggunaan sumber daya. Selain itu, verifikasi pada sistem
+dasar~\cite{wijaya2026} menghasilkan kode yang kemudian dijalankan pada server
+target, bukan jawaban teks pendek. Akibatnya, teknik penggabungan yang lazim,
+seperti \asing{majority vote} atas jawaban, tidak dapat langsung diterapkan,
+dan belum diketahui strategi penggabungan mana yang paling sesuai untuk
+keluaran berupa kode.
+
+% (4) Apa yang dilakukan penelitian ini.
+Penelitian ini menjalankan sistem multi-agen manajemen kerentanan
+Wijaya~\cite{wijaya2026} secara lokal dengan vLLM sebagai \asing{serving engine}
+dan n8n sebagai orkestrator, lalu membandingkan beberapa konfigurasi Agen
+Verifikasi: model tunggal, \asing{self-consistency} dengan model tunggal yang
+sama sebagai kontrol beban komputasi, dan \asing{LLM council} dengan dua
+strategi penggabungan, yaitu \asing{voting} atas hasil eksekusi kode dan
+pemilihan kode oleh \asing{chairman}. Setiap konfigurasi diukur dari sisi
+akurasi terhadap data uji berlabel dan dari sisi penggunaan sumber daya, yaitu
+token, latensi, VRAM, dan energi GPU. Hasilnya diharapkan menjawab apakah
+peningkatan akurasi yang diberikan \asing{LLM council}, jika ada, sepadan dengan
+sumber daya tambahan yang dibutuhkannya pada perangkat keras yang realistis bagi
+UKM.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan-masalah}
 % Satu masalah utama dan 2--3 submasalah (pedoman 9.1 butir 2).
+Masalah utama penelitian ini adalah belum diketahuinya apakah \asing{LLM council}
+memberikan peningkatan akurasi verifikasi kerentanan yang sepadan dengan tambahan
+penggunaan sumber daya dibandingkan model tunggal pada sistem multi-agen berbasis
+LLM lokal. Masalah tersebut dirinci menjadi tiga pertanyaan berikut.
 \begin{enumerate}
   \item Apakah \asing{LLM council} menghasilkan verifikasi kerentanan yang lebih
-        akurat dibandingkan \asing{single model} terbaik pada perangkat keras lokal
-        yang sama?
-  \item Berapa biaya tambahan \asing{LLM council} dalam latensi, jumlah token, dan
-        penggunaan VRAM?
-  \item Strategi agregasi mana yang paling efektif: \asing{majority vote},
-        \asing{weighted vote}, atau \asing{chairman model}?
+        akurat (\asing{precision}, \asing{recall}, F1, dan \asing{false-positive
+        rate}) dibandingkan model tunggal terbaik dan \asing{self-consistency}
+        pada perangkat keras lokal yang sama?
+  \item Berapa tambahan penggunaan sumber daya (token, latensi, VRAM, dan energi)
+        yang dibutuhkan \asing{LLM council}, dan bagaimana pertukaran antara
+        akurasi dan sumber daya tersebut dibandingkan model tunggal?
+  \item Strategi penggabungan mana yang lebih baik untuk keluaran berupa kode
+        verifikasi: \asing{voting} atas hasil eksekusi atau pemilihan kode oleh
+        \asing{chairman} sebelum eksekusi?
 \end{enumerate}
 
 \section{Hipotesis Penelitian}
 \label{sec:hipotesis}
 % Satu hipotesis per rumusan masalah, dapat diuji oleh eksperimen.
 \begin{enumerate}
-  \item ...
+  \item \asing{LLM council} dengan model yang beragam menghasilkan F1 yang lebih
+        tinggi dan \asing{false-positive rate} yang lebih rendah dibandingkan
+        model tunggal terbaik maupun \asing{self-consistency} dengan jumlah
+        sampel yang sama.
+  \item \asing{LLM council} membutuhkan token, latensi, VRAM, dan energi per kasus
+        yang lebih besar dibandingkan model tunggal, tetapi energi per verifikasi
+        yang benar tidak meningkat sebanding dengan jumlah anggota
+        \asing{council}.
+  \item \asing{Voting} atas hasil eksekusi menghasilkan akurasi yang lebih tinggi
+        dibandingkan pemilihan kode oleh \asing{chairman}, dengan konsekuensi
+        jumlah eksekusi pada server target dan penggunaan sumber daya yang lebih
+        besar.
 \end{enumerate}
 
 \section{Tujuan Penelitian}
 \label{sec:tujuan}
 % Satu tujuan per rumusan masalah, dengan urutan yang sama (pedoman 9.1 butir 3).
 \begin{enumerate}
-  \item ...
+  \item Membandingkan akurasi verifikasi kerentanan antara model tunggal,
+        \asing{self-consistency}, dan \asing{LLM council} pada Agen Verifikasi
+        yang berjalan secara lokal.
+  \item Mengukur penggunaan sumber daya setiap konfigurasi dan menganalisis
+        pertukaran antara akurasi dan sumber daya tersebut.
+  \item Membandingkan efektivitas dan biaya strategi \asing{voting} atas hasil
+        eksekusi dengan strategi pemilihan kode oleh \asing{chairman}.
 \end{enumerate}
 
 \section{Manfaat Penelitian}
 \label{sec:manfaat}
 % Pedoman 9.1 butir 4: manfaat akademis dan manfaat praktis.
 \subsection{Manfaat Akademis}
-...
+Penelitian ini memberikan bukti empiris tentang efektivitas \asing{LLM council}
+pada tugas verifikasi kerentanan yang keluarannya berupa kode yang dapat
+dijalankan, bukan jawaban teks. Penggunaan \asing{self-consistency} sebagai
+kontrol memisahkan pengaruh keberagaman model dari pengaruh bertambahnya
+jumlah sampel. Penelitian ini juga menyajikan pengukuran sumber daya, termasuk
+energi GPU, yang dapat dipakai sebagai acuan bagi penelitian lain tentang
+penggabungan beberapa LLM pada perangkat keras terbatas.
 
 \subsection{Manfaat Praktis}
-...
+Hasil penelitian ini dapat menjadi pertimbangan bagi UKM atau organisasi tanpa
+tim keamanan siber khusus yang ingin menjalankan sistem manajemen kerentanan
+berbasis AI di infrastruktur sendiri, terutama dalam memilih antara satu model
+atau beberapa model dengan anggaran perangkat keras yang terbatas. Penelitian
+ini juga menghasilkan versi sistem Wijaya~\cite{wijaya2026} yang seluruhnya
+berjalan secara lokal dengan vLLM, sehingga data kerentanan organisasi tidak
+perlu dikirim ke layanan pihak ketiga.
 
 \section{Ruang Lingkup Penelitian}
 \label{sec:ruang-lingkup}
 % Batasan, asumsi, dan keterbatasan (pedoman 9.1 butir 5).
 \begin{enumerate}
-  \item Perbandingan hanya dilakukan pada Agen Verifikasi; agen lain dijalankan
-        secara lokal tetapi tidak dievaluasi.
-  \item Orkestrasi memakai n8n dan \asing{serving} memakai vLLM dengan model
-        \asing{open-weight} terkuantisasi.
-  \item ...
+  \item Perbandingan hanya dilakukan pada Agen Verifikasi. Agen Direktur, Agen
+        Pencari, Agen Peneliti, dan Agen Pengamat Teknis dijalankan secara lokal
+        tetapi tidak dioptimasi atau dievaluasi secara mendalam.
+  \item Orkestrasi memakai n8n seperti pada sistem dasar~\cite{wijaya2026}, dan
+        \asing{serving} model memakai vLLM dengan model \asing{open-weight} yang
+        muat pada satu GPU kelas konsumen atau \asing{workstation}.
+  \item Arsitektur asli sistem dasar dijalankan kembali sebagai kontrol. Energi
+        bagian sistem dasar yang berjalan di \asing{cloud} tidak dapat diukur,
+        sehingga hanya energi komponen lokal yang dilaporkan untuk konfigurasi
+        tersebut.
+  \item Pengujian dilakukan pada lingkungan laboratorium virtual dengan server
+        target yang menjalankan perangkat lunak dengan kerentanan yang telah
+        diketahui, bukan pada sistem produksi. Kebenaran hasil verifikasi dinilai
+        terhadap data uji berlabel yang berisi kasus rentan dan tidak rentan.
+  \item Penggunaan energi diukur pada GPU menggunakan pustaka Zeus, sedangkan
+        energi CPU dan seluruh sistem hanya dilaporkan sebagai pelengkap.
+  \item \asing{LLM council} dibatasi pada tiga model dari keluarga yang berbeda
+        dengan ukuran yang sebanding.
 \end{enumerate}
 
 \section{Sistematika Penulisan}
 \label{sec:sistematika}
 % Opsional untuk format monograf; satu paragraf singkat per bab.
-\textbf{Bab~\ref{bab:pendahuluan} Pendahuluan} berisi ...
+\textbf{Bab~\ref{bab:pendahuluan} Pendahuluan} berisi latar belakang, rumusan
+masalah, hipotesis, tujuan, manfaat, ruang lingkup penelitian, dan sistematika
+penulisan.
 
-\textbf{Bab~\ref{bab:tinjauan} Tinjauan Pustaka} berisi ...
+\textbf{Bab~\ref{bab:tinjauan} Tinjauan Pustaka} berisi teori tentang manajemen
+kerentanan dan CVE, LLM dan kuantisasi, \asing{serving} LLM dengan vLLM, sistem
+multi-agen, teknik penggabungan keluaran beberapa LLM, serta metrik evaluasi,
+dilanjutkan dengan penelitian terkait dan analisis kesenjangan penelitian.
 
-\textbf{Bab~\ref{bab:metodologi} Metodologi Penelitian} berisi ...
+\textbf{Bab~\ref{bab:metodologi} Metodologi Penelitian} berisi arsitektur sistem
+dan lingkungan pengujian, konfigurasi Agen Verifikasi yang dibandingkan,
+penyusunan data uji berlabel, serta prosedur pengukuran akurasi dan penggunaan
+sumber daya.
 
-\textbf{Bab~\ref{bab:hasil} Hasil dan Pembahasan} berisi ...
+\textbf{Bab~\ref{bab:hasil} Hasil dan Pembahasan} berisi hasil pengujian setiap
+konfigurasi, analisis pertukaran antara akurasi dan sumber daya, serta pembahasan
+terhadap hipotesis penelitian.
 
-\textbf{Bab~\ref{bab:kesimpulan} Kesimpulan dan Saran} berisi ...
+\textbf{Bab~\ref{bab:kesimpulan} Kesimpulan dan Saran} berisi jawaban atas
+rumusan masalah dan saran untuk penelitian selanjutnya.
